@@ -5,7 +5,9 @@ The git repository is part of a CI/CD Jenkins project, running the app on a dock
 Any new committed changes to the code will trigger a GitHub hook and will pull the code automatically in Jenkins to integrate the changes into a new image and deploy the new version to production.
 
 GitHub: https://github.com/mmark0v/markov-app
+
 DockerHub: https://hub.docker.com/repository/docker/mmark0v/markov-app
+
 Product: https://martin-markov.com
 
 This web app is a single page personal website using frontend template from "iPortfolio Designed by BootstrapMade". This website was created to present Martin Markov's experience and achievements.
