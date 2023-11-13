@@ -2,7 +2,7 @@ The project is dockerising my son's personal website that I created some time ag
 
 The git repository is part of a CI/CD Jenkins project, running the app on a docker container using apache2. The container image is build and pushed to the Docker public repository from where it is pulled and run in an AWS instance. The container exposes port 80 on the docker agent running the container.
 
-Any new committed changes to the code will trigger a GitHub hook and will pull the code automatically in Jenkins to integrate the changes into a new image and deploy the new version to production.
+Any committed changes to the code will trigger a GitHub hook and will pull the code automatically in Jenkins to integrate the changes into a new image and deploy the new version to production.
 
 GitHub: https://github.com/mmark0v/markov-app
 
