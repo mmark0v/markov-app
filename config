@@ -1,4 +1,4 @@
 FQDN="cloud-start.co.uk"
-PORT=8881                    # SSL port 443
+PORT=443                    # SSL port 443
 EMAIL="malin_id@yahoo.com"
 TEST_CERT="--test-cert"
