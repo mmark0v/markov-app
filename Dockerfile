@@ -39,6 +39,7 @@ RUN     echo "ServerName 172.0.0.1" >> /etc/apache2/apache2.conf
 
 WORKDIR /var/log
 EXPOSE  80
+EXPOSE  8881
 EXPOSE  443
 
 CMD ["bash", "-c", "/usr/sbin/cron && /usr/sbin/apachectl -D FOREGROUND"]
