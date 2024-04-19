@@ -46,27 +46,27 @@ cp /root/000-default-le-ssl.conf /etc/apache2/sites-available/
 ln -s /etc/apache2/sites-available/000-default-le-ssl.conf /etc/apache2/sites-enabled/000-default-le-ssl.conf
 
 
-# check if certs are installed and remove the cron job if it's done.
-if [[ $(certbot certificates | grep "No certificates found.") ]] 
-then 
-    echo "`date`: No certificates found." | tee -a /var/log/certbot-install.log
-    certbot ${TEST_CERT} -d www.${FQDN} -d ${FQDN} -m ${EMAIL} -n --agree-tos --apache
+# # check if certs are installed and remove the cron job if it's done.
+# if [[ $(certbot certificates | grep "No certificates found.") ]] 
+# then 
+#     echo "`date`: No certificates found." | tee -a /var/log/certbot-install.log
+#     certbot ${TEST_CERT} -d www.${FQDN} -d ${FQDN} -m ${EMAIL} -n --agree-tos --apache
     
-else 
-    echo "`date`: Certificates found" | tee -a /var/log/certbot-install.log
-    echo "`date`: Checking certificates" | tee -a /var/log/certbot-install.log
-    certbot certificates | tee -a /var/log/certbot-install.log
+# else 
+#     echo "`date`: Certificates found" | tee -a /var/log/certbot-install.log
+#     echo "`date`: Checking certificates" | tee -a /var/log/certbot-install.log
+#     certbot certificates | tee -a /var/log/certbot-install.log
 
-    echo "`date`: Removing installation files" | tee -a /var/log/certbot-install.log
-    rm /etc/cron.d/010-install_certbot /root/000-default-le-ssl.conf /root/config /root/install.sh
-fi
+#     echo "`date`: Removing installation files" | tee -a /var/log/certbot-install.log
+#     rm /etc/cron.d/010-install_certbot /root/000-default-le-ssl.conf /root/config /root/install.sh
+# fi
 
 
-# Adding missing entries in the vhost
-if [[ ! $(grep letsencrypt /etc/apache2/sites-available/*) ]]
-then 
-    sed -i '/ServerAlias/a SSLCertificateKeyFile /etc/letsencrypt/live/www.zarcars.co.uk/privkey.pem' /etc/apache2/sites-available/000-default-le-ssl.conf
-    sed -i '/ServerAlias/a SSLCertificateFile /etc/letsencrypt/live/www.zarcars.co.uk/fullchain.pem' /etc/apache2/sites-available/000-default-le-ssl.conf
-    sed -i '/ServerAlias/a Include /etc/letsencrypt/options-ssl-apache.conf' /etc/apache2/sites-available/000-default-le-ssl.conf
-    /usr/sbin/apachectl restart
-fi
+# # Adding missing entries in the vhost
+# if [[ ! $(grep letsencrypt /etc/apache2/sites-available/*) ]]
+# then 
+#     sed -i '/ServerAlias/a SSLCertificateKeyFile /etc/letsencrypt/live/www.${FQDN}/privkey.pem' /etc/apache2/sites-available/000-default-le-ssl.conf
+#     sed -i '/ServerAlias/a SSLCertificateFile /etc/letsencrypt/live/www.${FQDN}/fullchain.pem' /etc/apache2/sites-available/000-default-le-ssl.conf
+#     sed -i '/ServerAlias/a Include /etc/letsencrypt/options-ssl-apache.conf' /etc/apache2/sites-available/000-default-le-ssl.conf
+#     /usr/sbin/apachectl restart
+# fi
