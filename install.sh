@@ -4,7 +4,7 @@
 
 cat << EOF >> /root/000-default-le-ssl.conf
 <IfModule mod_ssl.c>
-<VirtualHost *:443>
+<VirtualHost *:${PORT}>
 	# The ServerName directive sets the request scheme, hostname and port that
 	# the server uses to identify itself. This is used when creating
 	# redirection URLs. In the context of virtual hosts, the ServerName
