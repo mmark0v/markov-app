@@ -10,5 +10,6 @@ services:
       - ./site:/var/www/html
     ports:
       - 8082:80
-    container_name: mmarkov-app
+      - 4432:443
+    container_name: martin-markov.com
 
