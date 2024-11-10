@@ -5,6 +5,7 @@ services:
 
   web:
     image: mmark0v/markov-app
+    restart: always
     volumes:
       - ./site:/var/www/html
     ports:
